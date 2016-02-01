@@ -121,8 +121,7 @@ exports.closureCompiler = function(jar, opts) {
             this.output(val);
     }, this);
     if (js) {
-        args.push("--js");
-        args.push(js);
+        args.push(js.map(function(arg) { return "--js=" + arg; }));
     }
     args = [].concat(args); // flatten one level
     this.java("-jar", jar, args);
